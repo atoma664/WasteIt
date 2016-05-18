@@ -29,7 +29,6 @@ public class AsyncCallWS extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
-       // L/og.i(TAG, "doInBackground");
 
         if (context instanceof LoadCurrencyListener) {
             mListener = (LoadCurrencyListener) context;

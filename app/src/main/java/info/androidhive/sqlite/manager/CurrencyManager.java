@@ -82,6 +82,19 @@ public class CurrencyManager implements ManagerInterface {
         }
     }
 
+    public Currency getCurrencyByCode(String Code)
+    {
+        for (Currency curr: getAllCurrencies())
+        {
+            if (curr.getCurrencyCode().equals(Code))
+            {
+                return curr;
+            }
+        }
+
+        return null;
+    }
+
     public static CurrencyManager getInstance()
     {
         if (m_instance == null)
@@ -90,6 +103,11 @@ public class CurrencyManager implements ManagerInterface {
         }
 
         return m_instance;
+    }
+
+    public static Currency getDefault()
+    {
+        return (CurrencyManager.getInstance().getCurrencyByCode("USD"));
     }
 
     public static double ConvertFromToCurrency(Currency from, Currency to, double dValue)

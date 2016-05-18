@@ -5,11 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import info.androidhive.sqlite.model.Category;
 import info.androidhive.sqlite.model.Currency;
@@ -276,52 +279,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
  * get single todo
  */
-    public Event getEvent(int event_id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
+    public Event getEvent(int event_id)
+    {
         String selectQuery = "SELECT " + EventColumnString + ", " + CurrencyColumnString
                 + " FROM " + TABLE_EVENT + " " + EVENT_QUALIFIRE + ", "  + TABLE_CURRENCY + " " + CURRENCY_QUALIFIRE
                 + " WHERE " + EVENT_QUALIFIRE + "." + KEY_ID + " = " + event_id +
                 " AND " + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID;
 
-        // Log.e(LOG, selectQuery);
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        Cursor c = db.rawQuery(selectQuery, null);
+            if (c != null)
+                c.moveToFirst();
 
-        if (c != null)
-            c.moveToFirst();
-
-        if (c.getCount() != 0) {
-            return ReadEventToObject(c);
+            if (c.getCount() != 0)
+            {
+                return ReadEventToObject(c);
+            }
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
         }
 
         return null;
     }
 
-    public Category getCategory(int category_id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
+    public Category getCategory(int category_id)
+    {
         String selectQuery = "SELECT  " + CategoriesColumnString + " FROM " + TABLE_CATEGORY + " " + CATEGORY_QUALIFIRE + " WHERE "
                 + KEY_ID + " = " + category_id;
 
-        // Log.e(LOG, selectQuery);
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        Cursor c = db.rawQuery(selectQuery, null);
+            if (c != null)
+                c.moveToFirst();
 
-        if (c != null)
-            c.moveToFirst();
+            Category category = ReadCategoryToObject(c);
 
-        Category category = ReadCategoryToObject(c);
-
-        return category;
+            return category;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
     }
 
     /*
 * get single todo
 */
-    public Expense getExpense(int expense_id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
+    public Expense getExpense(int expense_id)
+    {
         String selectQuery = "SELECT  " + ExpensesColumnString + ", " +
                 CategoriesColumnString + ", " +
                 EventColumnString +
@@ -332,23 +346,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND expense." + KEY_EXPENSE_CATEGORY_ID + " = cat." + KEY_ID +
                 " AND expense." + KEY_ID + " = " + expense_id;
 
-        // Log.e(LOG, selectQuery);
-
-        Cursor c = db.rawQuery(selectQuery, null);
-
-        if (c != null)
-            c.moveToFirst();
-
-        Expense expense = ReadExpenseToObject(c);
-
-        String[] str = (c.getString(c.getColumnIndex(KEY_EXPENSE_ADDITIONAL_FILES_LOCATION))).split(SEPERATOR);
-
-        for (String strCurr: str)
+        try
         {
-            expense.getAdditionalFileLocation().add(strCurr);
-        }
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        return expense;
+            if (c != null)
+                c.moveToFirst();
+
+            Expense expense = ReadExpenseToObject(c);
+
+            String[] str = (c.getString(c.getColumnIndex(KEY_EXPENSE_ADDITIONAL_FILES_LOCATION))).split(SEPERATOR);
+
+            for (String strCurr : str) {
+                expense.getAdditionalFileLocation().add(strCurr);
+            }
+
+            return expense;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
     }
     //endregion
 
@@ -356,58 +376,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * getting all todos
      * */
-    public ArrayList<Event> getAllEvents() {
+    public ArrayList<Event> getAllEvents()
+    {
         ArrayList<Event> allevents = new ArrayList<Event>();
         String selectQuery = "SELECT " + EventColumnString + ", " + CurrencyColumnString
                 + " FROM " + TABLE_EVENT + " " + EVENT_QUALIFIRE + ", "  + TABLE_CURRENCY + " " + CURRENCY_QUALIFIRE
                 + " WHERE " + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID;
 
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        //  Log.e(LOG, selectQuery);
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    Event event = ReadEventToObject(c);
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
+                    // adding to todo list
+                    allevents.add(event);
+                } while (c.moveToNext());
+            }
 
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                Event event = ReadEventToObject(c);
-
-                // adding to todo list
-                allevents.add(event);
-            } while (c.moveToNext());
+            return allevents;
         }
-
-        return allevents;
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return (null);
+        }
     }
 
-    public ArrayList<Currency> getAllCurrencies() {
+    public ArrayList<Currency> getAllCurrencies()
+    {
         ArrayList<Currency> allcurr = new ArrayList<Currency>();
         String selectQuery = "SELECT " + CurrencyColumnString + " FROM " + TABLE_CURRENCY + " " + CURRENCY_QUALIFIRE;
 
-        //  Log.e(LOG, selectQuery);
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    Currency curr = ReadCurrencyToObject(c);
 
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                Currency curr = ReadCurrencyToObject(c);
+                    // adding to todo list
+                    allcurr.add(curr);
+                } while (c.moveToNext());
+            }
 
-                // adding to todo list
-                allcurr.add(curr);
-            } while (c.moveToNext());
+            return allcurr;
         }
-
-        return allcurr;
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
     }
 
     /**
      * getting all todos
      * */
-    public ArrayList<Expense> getAllExpenses() {
-
+    public ArrayList<Expense> getAllExpenses()
+    {
         ArrayList<Expense> allexepses = new ArrayList<Expense>();
         String selectQuery = "SELECT  " + ExpensesColumnString + ", "
                 + EventColumnString + ", "
@@ -514,6 +547,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return expense;
     }
+
+    private Expense ReadGeneralExpenseToObject(Cursor c)
+    {
+        Expense expense = new Expense();
+
+        expense.setID(Expense.GENERAL_EXPENSE_ID);
+        expense.setName(Expense.GENERAL_EXPENSE_NAME);
+        expense.setCost(c.getFloat(c.getColumnIndex("SUM("+ KEY_EXPENSE_COST + ")")));
+        expense.setDate(getDateFromDateTime(c.getString(c.getColumnIndex(KEY_EXPENSE_DATE))));
+        expense.setToInclude(false);
+
+        expense.setEvent(getEvent(c.getInt(c.getColumnIndex(KEY_EXPENSE_EVENT_ID))));
+        expense.setCategory(null);
+
+        return expense;
+    }
     //endregion
 
     //region Tools
@@ -586,19 +635,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                " WHERE " + KEY_EXPENSE_EVENT_ID + " = " + eventid + " AND " + KEY_EXPENSE_DATE + " <= Datetime('" +
                 getDateOnlyDateTime(currDat) + "')";
 
-     //   Log.e(LOG, selectQuery);
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst())
+        // Try to execute
+        try
         {
-            double dSum = c.getDouble(0);
-            return dSum;
-        }
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        return 0;
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                double dSum = c.getDouble(0);
+                return dSum;
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e,selectQuery);
+            return (Consts.SAVE_ERROR);
+        }
+    }
+
+    private void WriteToLog(Exception e, String strMessage)
+    {
+        Log.e(LOG, e.getStackTrace()[e.getStackTrace().length - 1].getMethodName() + " Cant Execute :" + strMessage);
     }
 
     /**
@@ -613,22 +673,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                              "' AND " + EVENT_QUALIFIRE  + "." + KEY_EVENT_END_DATE + " >= '" + getTodayDateTime() + "' AND "
                                         + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID;
 
-        //  Log.e(LOG, selectQuery);
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
+            // looping through all rows and adding to list
+            if (c.moveToFirst())
+            {
+                do {
+                    Event event = ReadEventToObject(c);
 
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                Event event = ReadEventToObject(c);
+                    // adding to todo list
+                    allevents.add(event);
+                } while (c.moveToNext());
+            }
 
-                // adding to todo list
-                allevents.add(event);
-            } while (c.moveToNext());
+            return allevents;
         }
+        catch (Exception e)
+        {
+            Log.e(LOG, "GET_CURRENT_EVENTS: Cant execute " + selectQuery);
 
-        return allevents;
+            return (null);
+        }
     }
 
     public ArrayList<Expense> getAllExpensesByDateAndEvent(int nEventID, Date d) {
@@ -650,20 +718,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //  Log.e(LOG, selectQuery);
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                Expense expense = ReadExpenseToObject(c);
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    Expense expense = ReadExpenseToObject(c);
 
-                // adding to todo list
-                allexepses.add(expense);
-            } while (c.moveToNext());
+                    // adding to todo list
+                    allexepses.add(expense);
+                } while (c.moveToNext());
+            }
+
+            return allexepses;
         }
-
-        return allexepses;
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
     }
     //endregion
 
@@ -671,32 +747,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
     * Deleting an Expense
     */
-    public int deleteExpense(long expenseid) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_EXPENSE, KEY_ID + " = ?",
-                new String[] { String.valueOf(expenseid) });
+    public int deleteExpense(long expenseid)
+    {
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+            return db.delete(TABLE_EXPENSE, KEY_ID + " = ?",
+                    new String[]{String.valueOf(expenseid)});
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Delete Expense");
+            return Consts.SAVE_ERROR;
+        }
     }
 
     /*
     * Deleting an event
     */
-    public int deleteEvent(long expenseid) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_EVENT, KEY_ID + " = ?",
-                new String[] { String.valueOf(expenseid) });
+    public int deleteEvent(long expenseid)
+    {
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete(TABLE_EVENT, KEY_ID + " = ?",
+                    new String[]{String.valueOf(expenseid)});
 
-        String whereClause = KEY_EXPENSE_EVENT_ID + "=?";
-        String[] whereArgs = new String[] { String.valueOf(expenseid) };
-        return db.delete(TABLE_EXPENSE, whereClause, whereArgs);
+            String whereClause = KEY_EXPENSE_EVENT_ID + "=?";
+            String[] whereArgs = new String[]{String.valueOf(expenseid)};
+            return db.delete(TABLE_EXPENSE, whereClause, whereArgs);
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Delete event");
+            return Consts.SAVE_ERROR;
+        }
     }
     //endregion
 
     /*
  * Updating a todo
  */
-    public int updateEvent(Event event) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public int updateEvent(Event event)
+    {
         ContentValues values = new ContentValues();
         values.put(KEY_EVENT_NAME, event.getName());
         values.put(KEY_EVENT_MONEY_AMOUNT, event.getMoneyAmount());
@@ -705,62 +798,174 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_EVENT_PEOPLE_NUMBER, event.getNumOfPeople());
         values.put(KEY_EVENT_DAYS_NUMBER, event.getDaysNum());
 
-        deleteExpensesByEventDates(event);
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+            deleteExpensesByEventDates(event);
 
-        // updating row
-        return db.update(TABLE_EVENT, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(event.getID()) });
+            // updating row
+            return db.update(TABLE_EVENT, values, KEY_ID + " = ?",
+                    new String[]{String.valueOf(event.getID())});
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Update Event");
+            return (Consts.SAVE_ERROR);
+        }
     }
 
-    public int updateExpense(Expense expense) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public int updateExpense(Expense expense)
+    {
         ContentValues values = new ContentValues();
         values.put(KEY_EXPENSE_NAME, expense.getName());
         values.put(KEY_EXPENSE_COST, expense.getCost());
         values.put(KEY_EXPENSE_CATEGORY_ID, expense.getCategory().getID());
 
-        // updating row
-        return db.update(TABLE_EXPENSE, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(expense.getID()) });
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            // updating row
+            return db.update(TABLE_EXPENSE, values, KEY_ID + " = ?",
+                    new String[]{String.valueOf(expense.getID())});
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Update Expense");
+            return Consts.SAVE_ERROR;
+        }
     }
 
-    public int updateCurrencyValue(Currency curr) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public int updateCurrencyValue(Currency curr)
+    {
         ContentValues values = new ContentValues();
         values.put(KEY_CURRENCY_VALUE, curr.getValue());
 
-        // updating row
-        return db.update(TABLE_EVENT, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(curr.getID()) });
+        try
+        {
+            // updating row
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            return db.update(TABLE_EVENT, values, KEY_ID + " = ?",
+                    new String[]{String.valueOf(curr.getID())});
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Update Currency");
+            return Consts.SAVE_ERROR;
+        }
     }
 
     //region Delete by ID
     /*
     * Deleting an Expense
     */
-    public void deleteExpensesByEventDates(Event e) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int nAmount = db.delete(TABLE_EXPENSE, KEY_EXPENSE_EVENT_ID + " = ? AND " + KEY_EXPENSE_DATE + " NOT BETWEEN ? AND ?" ,
-                                   new String[] { String.valueOf(e.getID()),
-                                        getDateOnlyDateTime(e.getStartDate()),
-                                        getDateOnlyDateTime(e.getEndDate())});
+    public int deleteExpensesByEventDates(Event event)
+    {
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+            return (db.delete(TABLE_EXPENSE, KEY_EXPENSE_EVENT_ID + " = ? AND " + KEY_EXPENSE_DATE + " NOT BETWEEN ? AND ?",
+                    new String[]{String.valueOf(event.getID()),
+                            getDateOnlyDateTime(event.getStartDate()),
+                            getDateOnlyDateTime(event.getEndDate())}));
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "Delete Expense");
+            return Consts.SAVE_ERROR;
+        }
     }
+
+    public ArrayList<Expense> getGeneralExpensesByDay()
+    {
+        ArrayList<Expense> expensespredate = new ArrayList<Expense>();
+
+        String selectQuery = "SELECT  " + KEY_EXPENSE_EVENT_ID + ", SUM(" + KEY_EXPENSE_COST + "), " + KEY_EXPENSE_DATE +
+                " FROM " + TABLE_EXPENSE +
+                " GROUP BY " + KEY_EXPENSE_EVENT_ID + ", " + KEY_EXPENSE_DATE +
+                " ORDER BY " + KEY_EXPENSE_DATE;
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    Expense expense = ReadGeneralExpenseToObject(c);
+
+                    expensespredate.add(expense);
+
+                    // adding to todo list
+                } while (c.moveToNext());
+            }
+
+            return expensespredate;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
+    }
+
+    public HashMap<Date, Double> getExpensesSumPerDay()
+    {
+        HashMap<Date, Double> expensespredate = new HashMap<Date, Double>();
+
+        String selectQuery = "SELECT SUM(" + KEY_EXPENSE_COST + "), " + KEY_EXPENSE_DATE +
+                " FROM " + TABLE_EXPENSE +
+                " GROUP BY " + KEY_EXPENSE_DATE +
+                " ORDER BY " + KEY_EXPENSE_DATE;
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+
+                    Date date = getDateFromDateTime(c.getString(c.getColumnIndex(KEY_EXPENSE_DATE)));
+                    Double dValue = c.getDouble(0);
+                    expensespredate.put(date, dValue);
+                    // adding to todo list
+                } while (c.moveToNext());
+            }
+
+            return expensespredate;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, selectQuery);
+            return null;
+        }
+    }
+
 
     //region Delete by ID
     /*
     * Deleting an Expense
     */
-    public int UpdateCurrencyValueByCode(String strCode, double dValue) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public int UpdateCurrencyValueByCode(String strCode, double dValue)
+    {
         ContentValues values = new ContentValues();
         values.put(KEY_CURRENCY_VALUE, dValue);
 
-        // updating row
-        return db.update(TABLE_CURRENCY, values, KEY_CURRENCY_CODE + " = ?",
-                new String[] { strCode });
+        try
+        {
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            // updating row
+            return db.update(TABLE_CURRENCY, values, KEY_CURRENCY_CODE + " = ?",
+                    new String[]{strCode});
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e, "UpdateCurrency");
+            return (Consts.SAVE_ERROR);
+        }
     }
 
     // closing database

@@ -12,7 +12,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
-    <RelativeLayout
+    <RelativeLayout android:layoutDirection="ltr"
         android:layout_width="wrap_content" android:layout_marginBottom="-15dp"
         android:layout_height="wrap_content">
         <TextView

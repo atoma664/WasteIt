@@ -92,7 +92,7 @@ public class EventFragment extends Fragment implements View.OnClickListener {
 
         if (getEvent().getEndDate().before(dStart))
         {
-            ((LinearLayout)view.findViewById(R.id.event_frag_container)).setBackground(getResources().getDrawable(R.drawable.backgroud_behave_fast));
+            ((LinearLayout)view.findViewById(R.id.event_frag_container)).setBackground(getResources().getDrawable(R.drawable.backgroud_behave_Past));
             p.setProgress(100);
         }
         else if (getEvent().getStartDate().after(dStart))

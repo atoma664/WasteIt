@@ -20,7 +20,6 @@ public class CreateEventWidgetActivity extends AppCompatActivity implements NewE
     @Override
     public void showTruitonDatePickerDialog(View view, Date start, Date end)
     {
-            int n = 0;
         StartActivity.showDatePickerDialog(view, start, end, getSupportFragmentManager());
     }
 

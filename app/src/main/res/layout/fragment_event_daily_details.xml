@@ -18,14 +18,14 @@
                     android:layout_height="0dp" android:layout_weight="1">
                     <TextView  android:layout_centerInParent="true" android:textColor="@android:color/white"
                         android:layout_width="wrap_content" android:textSize="30dp" android:textStyle="bold"
-                        android:layout_height="wrap_content" android:text="My Balance For Today"/>
+                        android:layout_height="wrap_content" android:text="@string/daily_balance_string"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp" android:layout_weight="2">
                     <LinearLayout android:layout_centerInParent="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
+                        android:layout_width="wrap_content" android:layoutDirection="ltr"
                         android:layout_height="wrap_content">
                         <TextView android:id="@+id/event_daily_balance_daily_currency"
                             android:textStyle="bold" android:textColor="@android:color/white"
@@ -45,15 +45,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <TextView android:textColor="@android:color/white" android:textStyle="bold"
-                            android:layout_width="wrap_content" android:textSize="20dp"
-                            android:layout_height="wrap_content" android:text="Out of " android:layout_centerHorizontal="true"/>
-                        <TextView android:textColor="@android:color/white" android:textStyle="bold"
-                            android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_daily_allowance_currency"
-                            android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
-                        <TextView android:textColor="@android:color/white" android:textStyle="bold"
-                            android:id="@+id/event_daily_daily_allowance"
-                            android:layout_width="wrap_content" android:textSize="20dp"
-                            android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                            android:layout_width="wrap_content" android:layout_marginEnd="5dp" android:textSize="20dp"
+                            android:layout_height="wrap_content" android:text="@string/daily_event_out_of" android:layout_centerHorizontal="true"/>
+                        <LinearLayout android:layoutDirection="ltr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <TextView android:textColor="@android:color/white" android:textStyle="bold"
+                                android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_daily_allowance_currency"
+                                android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
+                            <TextView android:textColor="@android:color/white" android:textStyle="bold"
+                                android:id="@+id/event_daily_daily_allowance"
+                                android:layout_width="wrap_content" android:textSize="20dp"
+                                android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -65,13 +69,13 @@
                     android:layout_height="0dp" android:layout_weight="1">
                     <TextView  android:layout_centerInParent="true" android:textColor="@color/lightBlue"
                         android:layout_width="wrap_content" android:textSize="30dp" android:textStyle="bold"
-                        android:layout_height="wrap_content" android:text="My Total Balance"/>
+                        android:layout_height="wrap_content" android:text="@string/daily_event_total_string"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp" android:layout_weight="2">
                     <LinearLayout android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
+                        android:layout_centerHorizontal="true" android:layoutDirection="ltr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <TextView android:id="@+id/event_daily_balance_total_currency"
@@ -92,57 +96,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
-                            android:layout_width="wrap_content" android:textSize="20dp"
-                            android:layout_height="wrap_content" android:text="Out of " android:layout_centerHorizontal="true"/>
-                        <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
-                            android:layout_width="wrap_content" android:textSize="20dp"
-                            android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
-                        <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
-                            android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_money"
-                            android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                            android:layout_width="wrap_content" android:textSize="20dp" android:layout_marginEnd="5dp"
+                            android:layout_height="wrap_content" android:text="@string/daily_event_out_of" android:layout_centerHorizontal="true"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content" android:layoutDirection="ltr"
+                            android:layout_height="match_parent">
+                            <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
+                                android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_badget_total_currency"
+                                android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
+                            <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
+                                android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_money"
+                                android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
             <Button
                 android:layout_width="match_parent" android:id="@+id/event_daily_show_expenses_btn" android:background="@android:color/white"
-                android:layout_height="wrap_content" android:text="Show Expenses" />
+                android:layout_height="wrap_content" android:text="@string/daily_show_expenses_string" />
         </LinearLayout>
 
     </ScrollView>
-
-    <LinearLayout android:padding="5dp" android:visibility="invisible"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content" android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content" android:textSize="18dp" android:textStyle="bold"
-            android:layout_height="wrap_content" android:text="Daily Avarage: "/>
-        <TextView android:id="@+id/event_daily_avg_currency"
-            android:layout_width="wrap_content" android:textSize="18dp"
-            android:layout_height="wrap_content" android:text="$"/>
-        <TextView android:id="@+id/event_daily_daily_agv"
-            android:layout_width="wrap_content" android:textSize="18dp"
-            android:layout_height="wrap_content" android:text="135"/>
-        <TextView android:id="@+id/event_daily_total_expense"
-            android:layout_width="wrap_content" android:layout_marginTop="5dp"
-            android:layout_height="match_parent" android:text="200000"/>
-        <ProgressBar
-            android:id="@+id/TotalPercent" android:visibility="invisible"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:indeterminate="false"
-            android:indeterminateTint="@color/darkGreen"
-            android:max="100"
-            android:minHeight="20dp"
-            android:minWidth="150dp"
-            android:progress="100" />
-        <TextView android:id="@+id/event_daily_balance_percent" android:visibility="invisible" android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content" android:textSize="16dp"
-            android:layout_height="wrap_content" android:text="%100"/>
-    </LinearLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addExpense"
         android:layout_width="wrap_content"

@@ -78,6 +78,7 @@ public class StartActivity extends AppCompatActivity implements
     final String TAG_START = "Start";
     final String TAG_NEW_EDIT_EVENT = "NewEditEventFrag";
     final String LAST_FRAG = "LastFragment";
+    final String TAG_CALENDAR = "Calender";
 
     //region Getter Setter
     public Event getEvent() {
@@ -169,6 +170,14 @@ public class StartActivity extends AppCompatActivity implements
             case (TAG_EVENT_DAILY):
             {
                 f = EventDailyFragment.newInstance(getEvent());
+                strTag = TAG_EVENT_DAILY;
+
+                break;
+            }
+            // Event Daily
+            case (TAG_CALENDAR):
+            {
+                f = EventCalendarFragment.newInstance();
                 strTag = TAG_EVENT_DAILY;
 
                 break;
@@ -364,8 +373,6 @@ public class StartActivity extends AppCompatActivity implements
             }
             else
             {
-
-
                 // If none event has saves open event manager
                 if (nLastEvent == Consts.EVENT_NOT_EXIST_ERROR)
                 {
@@ -445,6 +452,11 @@ public class StartActivity extends AppCompatActivity implements
         }
         else if (id == R.id.menu_calander)
         {
+            Navagate(TAG_CALENDAR);
+        }
+        else if (id == R.id.menu_create_event)
+        {
+            Navagate(TAG_NEW_EDIT_EVENT);
         }
         else if (id == R.id.menu_tools)
         {

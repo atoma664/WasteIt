@@ -6,8 +6,12 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import info.androidhive.sqlite.helper.DatabaseHelper;
+import info.androidhive.sqlite.helper.Services;
+import info.androidhive.sqlite.model.Currency;
 import info.androidhive.sqlite.model.Expense;
 
 /**
@@ -74,6 +78,27 @@ public class ExpenseManager implements ManagerInterface {
     public double getTotalExpensesByEventAndDate(int EventID, Date dCurr)
     {
         return getDB().getTotalExpensesByEventAndDate(EventID, dCurr);
+    }
+
+    public HashMap<Date, Double> getExpensesSumByDate()
+    {
+        ArrayList<Expense> allexpenses = getDB().getGeneralExpensesByDay();
+        HashMap<Date, Double> sumExpenses = new HashMap<>();
+
+        for (Expense expense:allexpenses)
+        {
+            Double dCostConverted =
+                    CurrencyManager.ConvertFromToCurrency(expense.getEvent().getCurrency(), CurrencyManager.getDefault(),expense.getCost());
+
+            if (sumExpenses.get(expense.getDate())!= null)
+            {
+                dCostConverted += sumExpenses.get(expense.getDate());
+            }
+
+            sumExpenses.put(expense.getDate(), dCostConverted);
+        }
+
+        return sumExpenses;
     }
 
     @Override

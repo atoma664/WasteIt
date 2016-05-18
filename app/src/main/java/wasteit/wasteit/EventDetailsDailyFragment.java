@@ -372,10 +372,6 @@ public class EventDetailsDailyFragment extends Fragment implements View.OnClickL
         setTotalbalance(Services.ReturnRound(dBalance));
         setDailybalance(Services.ReturnRound(dBalancePerDay));
         setDailyAllowance(Services.ReturnRound(dExpensesAllowense));
-        setDailyAvgExpenses(Services.ReturnRound(dAverage));
-        setBalancePercent(nBalancePercent);
-        setProgress(nBalancePercent);
-        setTotal(getSpentToday());
     }
 
     // Init the first value when the frag creates
@@ -384,12 +380,8 @@ public class EventDetailsDailyFragment extends Fragment implements View.OnClickL
         // Date the views to the DM
         m_totalbalance = (TextView)v.findViewById(R.id.event_daily_balance_total);
         m_dailybalance = (TextView)v.findViewById(R.id.event_daily_balance_daily);
-        m_dailyAvgExpenses = (TextView)v.findViewById(R.id.event_daily_daily_agv);
         m_dailyAllowance =  (TextView)v.findViewById(R.id.event_daily_daily_allowance);
-        m_totalbalancePercent =  (TextView)v.findViewById(R.id.event_daily_balance_percent);
-        m_dbProgress = (ProgressBar)v.findViewById(R.id.TotalPercent);
         m_btnAdd = (FloatingActionButton) v.findViewById(R.id.addExpense);
-        m_total = (TextView)v.findViewById(R.id.event_daily_total_expense);
         m_container = v.findViewById(R.id.event_daily_daily_container);
 
         ((TextView)v.findViewById(R.id.event_daily_money)).setText(String.valueOf(m_currnet_event.getMoneyAmount()));
@@ -400,8 +392,8 @@ public class EventDetailsDailyFragment extends Fragment implements View.OnClickL
         String strCurrency = getCurrnetEvent().getCurrency().toString();
         m_totalCurrency.setText(strCurrency);
         m_DailyCurrency.setText(strCurrency);
-        ((TextView)v.findViewById(R.id.event_daily_avg_currency)).setText(strCurrency);
         ((TextView)v.findViewById(R.id.event_daily_daily_allowance_currency)).setText(strCurrency);
+        ((TextView)v.findViewById(R.id.event_daily_badget_total_currency)).setText(strCurrency);
 
         v.findViewById(R.id.event_daily_show_expenses_btn).setOnClickListener(this);
 

@@ -5,28 +5,32 @@
         <item
             android:id="@+id/menu_my_event"
             android:icon="@drawable/ic_event_black_24dp"
-            android:title="My Event" />
+            android:title="@string/menu_my_event_string" />
         <item
             android:id="@+id/menu_all_event"
             android:icon="@drawable/ic_list_black_24dp"
-            android:title="All Events" />
-        <item  android:visible="false"
+            android:title="@string/menu_all_events_string" />
+        <item
             android:id="@+id/menu_calander"
             android:icon="@drawable/ic_date_range_black_24dp"
-            android:title="Calander" />
+            android:title="@string/menu_calendar" />
         <item  android:visible="false"
             android:id="@+id/menu_tools"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />
     </group>
 
-    <item android:title="Communicate" android:visible="false">
+    <item android:title="@string/menu_title_actions" android:visible="true">
         <menu>
             <item
+                android:id="@+id/menu_create_event"
+                android:icon="@drawable/ic_add_event"
+                android:title="@string/menu_create_event" />
+            <item android:visible="false"
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
+            <item android:visible="false"
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />

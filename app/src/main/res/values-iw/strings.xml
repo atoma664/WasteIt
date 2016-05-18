@@ -1,0 +1,77 @@
+<resources>
+
+    <!-- Navagation -->
+    <string name="app_name">WasteIt</string>
+    <string name="navigation_drawer_open">פתח תפריט</string>
+    <string name="navigation_drawer_close">סגור תפסיט</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="menu_my_event_string">האירוע שלי</string>
+    <string name="menu_all_events_string">כל האירועים</string>
+    <string name="menu_calendar">תאריכון הוצאות</string>
+    <string name="menu_create_event">צור אירוע</string>
+    <string name="menu_title_actions">פעולות</string>
+
+    <!-- Start -->
+    <string name="CreateNewEventMessage">ברוכים הבאים לWasteIt! \nעל מנת להתחיל יש ליצור אירוע באמצעות הכפתור בתחתית המסך</string>
+
+    <!-- NO Expenses for this day -->
+    <string name="no_expenses_message">אין הוצאות ליום הנוכחי</string>
+
+    <!-- Daily Event -->
+    <string name="daily_balance_string">היתרה שלי להיום</string>
+    <string name="daily_event_total_string">היתרה הכוללת שלי</string>
+    <string name="daily_balance_string_land">היתרה שלי\nלהיום</string>
+    <string name="daily_event_total_string_land">היתרה\nהכוללת שלי</string>
+    <string name="daily_event_out_of">מתוך </string>
+    <string name="daily_show_expenses_string">הצג הוצאות</string>
+
+    <!-- New event -->
+    <string name="event_name_title">שם האירוע*:</string>
+    <string name="event_money_amount_message_title">תקציב*:</string>
+    <string name="event_start_date_title">תאריך התחלה*:</string>
+    <string name="event_end_date_title">תאריך סיום*:</string>
+    <string name="event_num_of_people_title">מספר משתתפים*:</string>
+    <string name="event_num_of_days">מספר ימים:</string>
+    <string name="new_event_title">צור אירוע חדש</string>
+    <string name="currency_default">** המטבע הנבחר יהיה המטבע הדיפולטי של האירוע</string>
+    <string name="update_event_title">עדכן אירוע</string>
+
+    <!-- widget -->
+    <string name="create_expense_string">צור הוצאה</string>
+    <string name="widget_event_deleted_message">האירוע נמחק</string>
+    <string name="widget_event_deleted_title">אירוע נמחק</string>
+    <string name="widget_select_other_event">בחר אירוע אחר</string>
+    <string name="widget_show_event">הצג אירוע</string>
+    <string name="widget_event_over">האירוע הסתיים</string>
+    <string name="widget_event_not_start">האירוע טרם התחיל</string>
+
+    <!-- GENERIC -->
+    <string name="save_btn_title">שמור</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="create_message">צור</string>
+    <string name="cancel_message">בטל</string>
+    <string name="ok_message">אישור</string>
+    <string name="must__field_message">* שדות חובה</string>
+
+    <!-- New Expense -->
+    <string name="add_new_expense_title">הוצאה חדשה</string>
+    <string name="update_expense_title">עדכן הוצאה</string>
+    <string name="expense_name_title">תיאור*:</string>
+    <string name="expense_cost_title">עלות*:</string>
+    <string name="expense_category_title">קטגוריה*:</string>
+
+    <!-- Expenses manager -->
+    <string name="today_expenses_title">הוצאות יומיות</string>
+
+    <string name="last_event_id">-1</string>
+
+    <!-- ConfWidgter -->
+    <string name="widget_event_error">* אין אירועים ביום הנוכחי. לחץ על הכפתור מתחת על מנת ליצור אירוע</string>
+    <string name="add_widget">הוסף וידגט</string>
+    <string name="configure">קונפיגורציה</string>
+    <string name="widget_select_event">בחר אירוע:</string>
+
+    <!-- Setting -->
+    <string name="settings_title">הגדרות</string>
+    <string name="setting_language">שפה:</string>
+</resources>

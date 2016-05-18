@@ -80,14 +80,14 @@ public class AddExpenseWidget extends AppWidgetProvider {
             // Set the balance title
             if (nDaysLeft < 0)
             {
-                views.setTextViewText(R.id.widget_blance_title, "Event was over");
+                views.setTextViewText(R.id.widget_blance_title, context.getString(R.string.widget_event_over));
 
                 // calc the percent do to the last day
                 nDailyPercent =(int) Math.round(dTotalBalance * 100 / eCurrent.getMoneyAmount());
             }
             else if (nDaysLeft > eCurrent.getDaysNum())
             {
-                views.setTextViewText(R.id.widget_blance_title, "Event had'nt start");
+                views.setTextViewText(R.id.widget_blance_title, context.getString(R.string.widget_event_not_start));
             }
 
             // Set the background color accurding to the amount
@@ -113,7 +113,7 @@ public class AddExpenseWidget extends AppWidgetProvider {
                intent.putExtra("StartEvent", eCurrent.getID());
                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-               views.setTextViewText(R.id.widget_button_create, "Show Event");
+               views.setTextViewText(R.id.widget_button_create, context.getString(R.string.widget_show_event));
                views.setOnClickPendingIntent(R.id.widget_button_create, pendingIntent);
            }
            else

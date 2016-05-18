@@ -3,6 +3,7 @@ package info.androidhive.sqlite.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by LENOVO on 04/05/2016.
@@ -17,6 +18,9 @@ public class Expense implements Serializable {
     private ArrayList<String> m_arrAdditionalFileLocation;
     private Event m_eEvent;
     private Category m_cCategory;
+
+    public static final int GENERAL_EXPENSE_ID = -999;
+    public static final String GENERAL_EXPENSE_NAME = "GeneralExpense";
 
     public Category getCategory() {
         return m_cCategory;

@@ -1,15 +1,31 @@
 <resources>
-    <string name="app_name">WasteIt</string>
 
+    <!-- Navagation -->
+    <string name="app_name">WasteIt</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+    <string name="menu_my_event_string">My Event</string>
+    <string name="menu_all_events_string">All Event</string>
+    <string name="menu_calendar">Expenses\' Calendar</string>
+    <string name="menu_create_event">Create Event</string>
+    <string name="menu_title_actions">Actions</string>
 
+    <!-- Start -->
     <string name="CreateNewEventMessage">Welcome To WasteIt! \n \nIn order to start, you need to create an event on the button bellow</string>
 
+    <!-- Daily Event -->
+    <string name="daily_balance_string">My Balance for Today</string>
+    <string name="daily_event_total_string">My Total Balance</string>
+    <string name="daily_balance_string_land">My Balance\nfor Today</string>
+    <string name="daily_event_total_string_land">My Total\nBalance</string>
+    <string name="daily_event_out_of">Out of </string>
+    <string name="daily_show_expenses_string">Show Expenses</string>
+
+    <!-- NO Expenses for this day -->
     <string name="no_expenses_message">There are no expenses for this date</string>
 
+    <!-- New Event -->
     <string name="event_name_title">Event Name*:</string>
     <string name="event_money_amount_message_title">Money Amount*:</string>
     <string name="event_start_date_title">Start Date*:</string>
@@ -17,33 +33,56 @@
     <string name="event_num_of_people_title">Number of people*:</string>
     <string name="event_num_of_days">Number of days:</string>
     <string name="new_event_title">Create New Event</string>
+    <string name="currency_default">** The Selected Currency will be the default curreny of this event</string>
+    <string name="update_event_title">Update Event</string>
 
-    <string-array name="curreny_array">
-        <item>$</item>
-        <item>₪</item>
-        <item>€</item>
-        <item>£</item>
-    </string-array>
+    <!-- widget -->
+    <string name="create_expense_string">Create Expense</string>
+    <string name="widget_event_deleted_message">Event was deleted</string>
+    <string name="widget_event_deleted_title">Event deleted</string>
+    <string name="widget_select_other_event">Select other event</string>
+    <string name="widget_show_event">Show Event</string>
+    <string name="widget_event_over">Event ended</string>
+    <string name="widget_event_not_start">Event hadn\'t start</string>
 
+    <!-- GENERIC -->
+    <string name="save_btn_title">Save</string>
     <string name="date_format">dd/MM/yyyy</string>
     <string name="create_message">Create</string>
     <string name="cancel_message">Cancel</string>
     <string name="ok_message">Ok</string>
     <string name="must__field_message">* You must fill those fields</string>
-    <string name="currency_default">** The Selected Currency will be the default durreny of this event</string>
 
+    <!-- New Expense -->
     <string name="add_new_expense_title">New Expense</string>
+    <string name="update_expense_title">Update Expense</string>
     <string name="expense_name_title">Name*:</string>
     <string name="expense_cost_title">Cost*:</string>
     <string name="expense_category_title">Category*:</string>
 
+    <!-- Expenses manager -->
+    <string name="today_expenses_title">Today\'s Expenses</string>
+
     <string name="last_event_id">-1</string>
 
-    <string name="event_daily_fragment_tag">EVENT_DAILY_FRAGMENT_TAG</string>
+    <!-- ConfWidgter -->
+    <string name="widget_event_error">*There are no events in this day. Click on the button below to create a new event"</string>
+    <string name="add_widget">Add widget</string>
+    <string name="configure">Configure</string>
+    <string name="widget_select_event">Select Event:</string>
+
+    <!-- Setting -->
+    <string name="settings_title">Settings</string>
+    <string name="setting_language">Language:</string>
+    <string name="setting_currency_title">Default Currency:</string>
+
+    <!-- Languages -->
+    <string-array name="string_languages">
+        <item>Default</item>
+        <item>English</item>
+        <item>עברית</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="configure">Configure</string>
-    <string name="add_widget">Add widget</string>
 </resources>

@@ -93,7 +93,7 @@ public class ExpenseMangerDialogFragment extends DialogFragment implements View.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        getDialog().setTitle("Today's Expenses");
+        getDialog().setTitle(getString(R.string.today_expenses_title));
 
 
         View view = inflater.inflate(R.layout.fragment_expense_manger, container, false);

@@ -10,12 +10,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Select Event" />
+            android:text="@string/widget_select_event" />
         <TextView android:id="@+id/ErrorMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp" android:textColor="@color/alert"
-            android:text="*There are no events in this day. Click on the button below to create a new event"/>
+            android:text="@string/widget_event_error"/>
         <Spinner  android:textColor="@color/fontdefault"
             android:id="@+id/widget_current_event_spinner"
             android:layout_width="match_parent"
