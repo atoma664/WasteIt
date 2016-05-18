@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout
+        android:layout_width="match_parent" android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Select Event" />
+        <TextView android:id="@+id/ErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" android:textColor="@color/alert"
+            android:text="*There are no events in this day. Click on the button below to create a new event"/>
+        <Spinner  android:textColor="@color/fontdefault"
+            android:id="@+id/widget_current_event_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/add_widget_button"
+            android:layout_width="wrap_content"
+            android:background="@color/lightgreen"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_widget" />
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:tint="@color/darkGreen" android:onClick="CreateEvent"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add" />
+</FrameLayout>

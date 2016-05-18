@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="match_parent" android:textColor="@android:color/white"
+    android:background="@color/lightBlueTransparent"
+    android:padding="@dimen/widget_margin">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" android:textColor="@android:color/white"
+            android:text="Waste It"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+        <TextView android:textColor="@android:color/white"
+            android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" android:textSize="22dp" android:id="@+id/widget_event_name"
+            android:layout_width="wrap_content" android:textStyle="bold" android:text="Deleted Event"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1">
+        <TextView android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" android:textColor="@android:color/white"
+            android:text="This event was deleted"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+    </RelativeLayout>
+    <Button android:id="@+id/widget_button_create"
+        android:text="Select other EVENT" android:layout_margin="5dp"
+        android:layout_height="wrap_content" android:layout_width="match_parent"
+        android:textColor="@android:color/white" android:textStyle="bold"
+        android:backgroundTint="@color/colorAccent"/>
+</LinearLayout>

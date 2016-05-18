@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:gravity="top"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="wrap_content" android:minWidth="360dp"
+    tools:context="wasteit.wasteit.NewExpenseDialogFragment">
+
+        <LinearLayout android:layout_marginLeft="5dp" android:layout_marginTop="-5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                android:layout_weight="1" android:text="@string/expense_name_title"
+                android:layout_height="wrap_content" />
+            <EditText android:id="@+id/new_expose_name"
+                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                android:layout_weight="0.5" android:text="@string/expense_cost_title"
+                android:layout_height="wrap_content" />
+            <Spinner android:layout_width="0dp" android:id="@+id/new_expense_currency"
+                android:layout_weight="0.2" android:text="$"
+                android:layout_height="match_parent" />
+            <EditText android:id="@+id/new_expose_cost" android:inputType="numberDecimal"
+                android:layout_width="0dp" android:layout_weight="0.3"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                android:layout_weight="1" android:text="@string/expense_category_title"
+                android:layout_height="wrap_content" />
+            <Spinner android:id="@+id/new_expose_category" android:inputType="number"
+                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent" android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <Button android:layout_margin="10dp"
+                android:layout_width="0dp" android:id="@+id/new_expense_create_btn"
+                android:layout_weight="1" android:text="@string/create_message"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkGreen"
+                android:backgroundTint="@color/colorAccent"/>
+            <Button android:layout_margin="10dp" android:id="@+id/new_expense_cancel_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1" android:text="@string/cancel_message"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+</LinearLayout>

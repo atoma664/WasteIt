@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartFragment">
+
+    <TextView
+        android:layout_width="match_parent" android:layout_margin="20dp"
+        android:layout_height="match_parent"
+        android:textSize="24dp"
+        android:text="@string/CreateNewEventMessage" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:tint="@color/darkGreen" android:onClick="onButtonPressed"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add" />
+</FrameLayout>

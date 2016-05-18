@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="wasteit.wasteit.NewEventFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_marginBottom="60dp">
+        <LinearLayout
+            android:layout_width="match_parent" android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView style="@style/AppTheme.Title"
+                android:layout_width="match_parent"
+                android:text="@string/new_event_title" android:id="@+id/new_event_title"
+                android:layout_height="wrap_content" />
+            <LinearLayout android:layout_marginLeft="10dp" android:layout_marginTop="-5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_name_title"
+                    android:layout_height="wrap_content" />
+                <EditText android:id="@+id/new_event_name"
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_money_amount_message_title"
+                    android:layout_height="wrap_content" />
+                <Spinner android:id="@+id/new_event_currency"
+                    android:layout_width="0dp"  android:layout_margin="3dp" android:layout_weight="0.3"
+                    android:layout_height="match_parent" android:textAlignment="center">
+                </Spinner>
+                <EditText android:id="@+id/new_event_money"
+                    android:layout_width="0dp" android:layout_weight="0.7" android:ems="10"
+                    android:layout_height="wrap_content" android:inputType="numberDecimal" />
+            </LinearLayout>
+            <LinearLayout android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_start_date_title"
+                    android:layout_height="wrap_content" />
+                <EditText android:id="@+id/new_event_start_date"  android:hint="dd/mm/yyyy" android:maxLength="10"
+                    android:layout_width="0dp" android:layout_weight="1" android:ems="10"
+                    android:layout_height="wrap_content" android:inputType="date"/>
+            </LinearLayout>
+            <LinearLayout android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_end_date_title"
+                    android:layout_height="wrap_content" />
+                <EditText android:id="@+id/new_event_end_date"
+                    android:onClick="onClick" android:maxLength="10" android:hint="dd/mm/yyyy"
+                    android:layout_width="0dp" android:layout_weight="1" android:ems="10"
+                    android:layout_height="wrap_content" android:inputType="date"/>
+            </LinearLayout>
+            <LinearLayout android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_num_of_days"
+                    android:layout_height="wrap_content" />
+                <TextView android:id="@+id/new_event_days_num" android:text="2"
+                    android:layout_width="0dp" android:layout_weight="1" android:ems="10"
+                    android:layout_height="wrap_content" android:inputType="date"/>
+            </LinearLayout>
+            <LinearLayout android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
+                    android:layout_weight="1" android:text="@string/event_num_of_people_title"
+                    android:layout_height="wrap_content" />
+                <EditText android:id="@+id/new_event_people_num" android:maxLength="2"
+                    android:layout_width="0dp" android:layout_weight="1" android:text="1"
+                    android:layout_height="wrap_content" android:inputType="number"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent" android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/red" android:textSize="14dp"
+                android:text="@string/must__field_message"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent" android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/red" android:textSize="14dp"
+                android:text="@string/currency_default"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button android:layout_margin="10dp"
+            android:layout_width="0dp" android:id="@+id/new_event_create_btn"
+            android:layout_weight="1" android:text="@string/create_message"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGreen"
+            android:backgroundTint="@color/colorAccent"/>
+        <Button android:layout_margin="10dp"  android:id="@+id/new_event_cancel_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1" android:text="@string/cancel_message"
+            android:layout_height="wrap_content"
+           />
+    </LinearLayout>
+
+</RelativeLayout>

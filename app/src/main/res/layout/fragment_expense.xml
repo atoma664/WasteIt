@@ -1,0 +1,69 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MinFragment.ExpenseFragment">
+    <LinearLayout
+        android:layout_marginBottom="0dp" android:paddingTop="5dp"
+        android:paddingLeft="15dp" android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent" android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView android:textSize="24dp" android:textStyle="bold"
+                        android:id="@+id/expense_frag_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event Name" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content" android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_vertical" android:id="@+id/expense_frag_edit"
+                        android:layout_height="match_parent" android:layout_marginLeft="15dp"
+                        android:layout_width="0dp" android:layout_weight="0.3"
+                        android:src="@drawable/ic_edit" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@+id/expense_frag_delete"
+                        android:layout_height="match_parent" android:layout_marginLeft="15dp"
+                        android:layout_width="0dp" android:layout_weight="0.3"
+                        android:src="@drawable/ic_clear_black_24dp" />
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:id="@+id/expense_frag_currency"
+                        android:layout_width="wrap_content" android:textSize="22dp"
+                        android:layout_height="wrap_content" android:text="$"/>
+                    <TextView android:id="@+id/expense_frag_money"
+                        android:layout_width="wrap_content"  android:textSize="22dp"
+                        android:layout_height="wrap_content" android:text="30000"/>
+                </LinearLayout>
+                <TextView android:id="@+id/expense_frag_category"
+                    android:layout_width="wrap_content" android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content" android:text="category"/>
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent" android:layout_marginTop="-15dp"
+                android:layout_height="wrap_content" android:src="@drawable/ic_linear_scale_black_24dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

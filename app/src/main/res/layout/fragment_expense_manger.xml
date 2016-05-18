@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".MinFragment.ExpenseMangerDialogFragment">
+    <ImageView
+        android:layout_width="wrap_content" android:layout_margin="10dp" android:id="@+id/expense_dialog_add"
+        android:layout_height="wrap_content" android:src="@drawable/ic_add_black_24dp"/>
+    <ScrollView android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout android:id="@+id/expense_manager_container" android:padding="5dp"
+            android:layout_width="match_parent" android:orientation="vertical"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
