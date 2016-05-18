@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">WasteIt</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="CreateNewEventMessage">Welcome To WasteIt! \n \nIn order to start, you need to create an event on the button bellow</string>
+
+    <string name="no_expenses_message">There are no expenses for this date</string>
+
+    <string name="event_name_title">Event Name*:</string>
+    <string name="event_money_amount_message_title">Money Amount*:</string>
+    <string name="event_start_date_title">Start Date*:</string>
+    <string name="event_end_date_title">End Date*:</string>
+    <string name="event_num_of_people_title">Number of people*:</string>
+    <string name="event_num_of_days">Number of days:</string>
+    <string name="new_event_title">Create New Event</string>
+
+    <string-array name="curreny_array">
+        <item>$</item>
+        <item>₪</item>
+        <item>€</item>
+        <item>£</item>
+    </string-array>
+
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="create_message">Create</string>
+    <string name="cancel_message">Cancel</string>
+    <string name="ok_message">Ok</string>
+    <string name="must__field_message">* You must fill those fields</string>
+    <string name="currency_default">** The Selected Currency will be the default durreny of this event</string>
+
+    <string name="add_new_expense_title">New Expense</string>
+    <string name="expense_name_title">Name*:</string>
+    <string name="expense_cost_title">Cost*:</string>
+    <string name="expense_category_title">Category*:</string>
+
+    <string name="last_event_id">-1</string>
+
+    <string name="event_daily_fragment_tag">EVENT_DAILY_FRAGMENT_TAG</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+</resources>

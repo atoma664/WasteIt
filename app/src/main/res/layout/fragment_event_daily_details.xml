@@ -1,0 +1,154 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventDetailsDailyFragment">
+    <ScrollView  android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent" android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout android:background="@color/lightBlue"
+                android:layout_width="match_parent" android:id="@+id/event_daily_daily_container"
+                android:orientation="vertical" android:layout_weight="3"
+                android:layout_height="0dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="1">
+                    <TextView  android:layout_centerInParent="true" android:textColor="@android:color/white"
+                        android:layout_width="wrap_content" android:textSize="30dp" android:textStyle="bold"
+                        android:layout_height="wrap_content" android:text="My Balance For Today"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="2">
+                    <LinearLayout android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView android:id="@+id/event_daily_balance_daily_currency"
+                            android:textStyle="bold" android:textColor="@android:color/white"
+                            android:layout_marginTop="-5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textSize="60dp"
+                            android:text="$"/>
+                        <TextView android:id="@+id/event_daily_balance_daily"  android:textColor="@android:color/white" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="70dp"
+                            android:layout_height="wrap_content" android:text="10000.0"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="1">
+                    <LinearLayout android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView android:textColor="@android:color/white" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="20dp"
+                            android:layout_height="wrap_content" android:text="Out of " android:layout_centerHorizontal="true"/>
+                        <TextView android:textColor="@android:color/white" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_daily_allowance_currency"
+                            android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
+                        <TextView android:textColor="@android:color/white" android:textStyle="bold"
+                            android:id="@+id/event_daily_daily_allowance"
+                            android:layout_width="wrap_content" android:textSize="20dp"
+                            android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@android:color/white"
+                android:layout_width="match_parent" android:layout_weight="2"
+                android:layout_height="0dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="1">
+                    <TextView  android:layout_centerInParent="true" android:textColor="@color/lightBlue"
+                        android:layout_width="wrap_content" android:textSize="30dp" android:textStyle="bold"
+                        android:layout_height="wrap_content" android:text="My Total Balance"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="2">
+                    <LinearLayout android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView android:id="@+id/event_daily_balance_total_currency"
+                            android:textStyle="bold" android:textColor="@color/lightBlue"
+                            android:layout_marginTop="-5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textSize="60dp"
+                            android:text="$"/>
+                        <TextView android:textColor="@color/lightBlue" android:id="@+id/event_daily_balance_total" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="70dp"
+                            android:layout_height="wrap_content" android:text="10000.0"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:layout_weight="1">
+                    <LinearLayout android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="20dp"
+                            android:layout_height="wrap_content" android:text="Out of " android:layout_centerHorizontal="true"/>
+                        <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="20dp"
+                            android:layout_height="wrap_content" android:text="$" android:layout_centerHorizontal="true"/>
+                        <TextView android:textColor="@color/lightBlue" android:textStyle="bold"
+                            android:layout_width="wrap_content" android:textSize="20dp" android:id="@+id/event_daily_money"
+                            android:layout_height="wrap_content" android:text="100000.0 " android:layout_centerHorizontal="true"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent" android:id="@+id/event_daily_show_expenses_btn" android:background="@android:color/white"
+                android:layout_height="wrap_content" android:text="Show Expenses" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout android:padding="5dp" android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content" android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content" android:textSize="18dp" android:textStyle="bold"
+            android:layout_height="wrap_content" android:text="Daily Avarage: "/>
+        <TextView android:id="@+id/event_daily_avg_currency"
+            android:layout_width="wrap_content" android:textSize="18dp"
+            android:layout_height="wrap_content" android:text="$"/>
+        <TextView android:id="@+id/event_daily_daily_agv"
+            android:layout_width="wrap_content" android:textSize="18dp"
+            android:layout_height="wrap_content" android:text="135"/>
+        <TextView android:id="@+id/event_daily_total_expense"
+            android:layout_width="wrap_content" android:layout_marginTop="5dp"
+            android:layout_height="match_parent" android:text="200000"/>
+        <ProgressBar
+            android:id="@+id/TotalPercent" android:visibility="invisible"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:indeterminate="false"
+            android:indeterminateTint="@color/darkGreen"
+            android:max="100"
+            android:minHeight="20dp"
+            android:minWidth="150dp"
+            android:progress="100" />
+        <TextView android:id="@+id/event_daily_balance_percent" android:visibility="invisible" android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content" android:textSize="16dp"
+            android:layout_height="wrap_content" android:text="%100"/>
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:tint="@color/fontdefault"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add" />
+</FrameLayout>

@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="match_parent" android:onClick="ShowEventDetails"
+    tools:context=".MinFragment.EventFragment">
+    <LinearLayout android:layout_marginTop="7dp"  android:id="@+id/event_frag_container"
+        android:layout_marginBottom="0dp" android:padding="7dp"
+        android:background="@drawable/background_behave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <!-- TODO: Update blank fragment layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent" android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView android:textSize="24dp" android:textStyle="bold"
+                        android:id="@+id/event_frag_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event Name" />
+
+                </LinearLayout>
+                <LinearLayout android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:id="@+id/event_frag_currency"
+                        android:layout_width="wrap_content" android:textSize="22dp"
+                        android:layout_height="wrap_content" android:text="$"/>
+                    <TextView android:id="@+id/event_frag_money"
+                        android:layout_width="wrap_content"  android:textSize="22dp"
+                        android:layout_height="wrap_content" android:text="30000"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content" android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_vertical" android:id="@+id/event_frag_edit"
+                        android:layout_height="match_parent" android:layout_marginLeft="15dp"
+                        android:layout_width="0dp" android:layout_weight="0.3"
+                        android:src="@drawable/ic_edit" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@+id/event_frag_delete"
+                        android:layout_height="match_parent" android:layout_marginLeft="15dp"
+                        android:layout_width="0dp" android:layout_weight="0.3"
+                        android:src="@drawable/ic_clear_black_24dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView android:id="@+id/event_frag_start_date"
+                    android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content" android:text="dd/mm/yyyy"/>
+                <ImageView
+                    android:layout_width="wrap_content" android:layout_centerInParent="true"
+                    android:layout_height="wrap_content" android:src="@drawable/ic_arrow"/>
+                <TextView android:id="@+id/event_frag_end_date"
+                    android:layout_width="wrap_content" android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content" android:text="dd/mm/yyyy"/>
+            </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/event_frag_progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progress_bar_event">
+            </ProgressBar>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="match_parent" android:textColor="@android:color/white"
+    android:background="@color/lightBlueTransparent" android:id="@+id/widget_back"
+    android:padding="@dimen/widget_margin">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" android:textColor="@android:color/white"
+            android:text="Waste It"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <TextView android:textColor="@android:color/white"
+            android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" android:textSize="22dp" android:id="@+id/widget_event_name"
+            android:layout_width="wrap_content" android:textStyle="bold" android:text="Event Name"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1">
+        <TextView android:textColor="@android:color/white" android:id="@+id/widget_blance_title"
+            android:layout_centerInParent="true" android:textStyle="bold"
+            android:layout_width="wrap_content" android:textSize="25dp"
+            android:layout_height="wrap_content" android:text="My Daily Balance"/>
+    </RelativeLayout>
+   <RelativeLayout android:layout_weight="2"
+       android:layout_width="match_parent"
+       android:layout_height="0dp">
+       <LinearLayout android:layout_marginStart="10dp" android:layout_centerInParent="true" android:layout_marginTop="-5dp"
+           android:layout_width="wrap_content" android:layoutDirection="ltr"
+           android:layout_height="wrap_content">
+           <TextView android:textColor="@android:color/white" android:textStyle="bold"
+               android:layout_width="wrap_content" android:textSize="35dp"
+               android:layout_height="wrap_content" android:text=" $"/>
+           <TextView android:id="@+id/widget_event_daily_balance"  android:textColor="@android:color/white"
+               android:layout_width="wrap_content" android:textSize="45dp" android:textStyle="bold"
+               android:layout_height="wrap_content" android:text="20000.0"/>
+       </LinearLayout>
+   </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/widget_daily_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:progress="0" android:textColor="@color/fontdefault"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/progress_bar_event">
+    </ProgressBar>
+    <Button android:id="@+id/widget_button_create"
+        android:text="Create Expense" android:layout_margin="5dp"
+        android:layout_height="wrap_content" android:layout_width="match_parent"
+        android:textColor="@android:color/white" android:textStyle="bold"
+        android:backgroundTint="@color/colorAccent"/>
+</LinearLayout>
