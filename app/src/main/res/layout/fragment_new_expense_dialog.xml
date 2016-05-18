@@ -4,7 +4,7 @@
     android:layout_height="wrap_content" android:minWidth="360dp"
     tools:context="wasteit.wasteit.NewExpenseDialogFragment">
 
-        <LinearLayout android:layout_marginLeft="5dp" android:layout_marginTop="-5dp"
+        <LinearLayout android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
@@ -20,12 +20,16 @@
             <TextView style="@style/AppTheme.FieldTitle" android:layout_width="0dp"
                 android:layout_weight="0.5" android:text="@string/expense_cost_title"
                 android:layout_height="wrap_content" />
-            <Spinner android:layout_width="0dp" android:id="@+id/new_expense_currency"
-                android:layout_weight="0.2" android:text="$"
-                android:layout_height="match_parent" />
-            <EditText android:id="@+id/new_expose_cost" android:inputType="numberDecimal"
-                android:layout_width="0dp" android:layout_weight="0.3"
-                android:layout_height="wrap_content" />
+            <LinearLayout android:layoutDirection="ltr"
+                android:layout_width="0dp" android:layout_weight="0.5"
+                android:layout_height="wrap_content">
+                <Spinner android:layout_width="0dp" android:id="@+id/new_expense_currency"
+                    android:layout_weight="0.4" android:text="$"
+                    android:layout_height="match_parent" />
+                <EditText android:id="@+id/new_expose_cost" android:inputType="numberDecimal"
+                    android:layout_width="0dp" android:layout_weight="0.6"
+                    android:layout_height="wrap_content" android:hint="0.0"/>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout android:layout_margin="5dp"
             android:layout_width="match_parent"

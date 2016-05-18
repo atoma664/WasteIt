@@ -10,4 +10,5 @@ public class Consts
     public static final int EVENT_NOT_EXIST_ERROR = -1;
     public static final int CURRENCY_UPDATE_ERROR = -1;
     public static final int SAVE_ERROR = -1;
+
 }

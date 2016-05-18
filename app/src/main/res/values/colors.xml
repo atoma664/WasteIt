@@ -15,7 +15,7 @@
     !-->
 
     <color name="lightBlue">#8ff2e1</color>
-    <color name="lightBlueTransparent">#b78ff2e1</color>
+    <color name="lightBlueTransparent">#918ff2e1</color>
     <color name="blue">#7bbbf6</color>
     <color name="turquoise">#4ad0b2</color>
     <color name="lightgreen">#a9fb7f</color>
@@ -25,6 +25,6 @@
     <color name="greenlevel">#B4D5F2</color>
     <color name="greenleveltwo">#d7e6f4</color>
     <color name="alert">#922307</color>
-    <color name="redTransparent">#83922307</color>
+    <color name="redTransparent">#57922307</color>
 
 </resources>

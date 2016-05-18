@@ -5,11 +5,11 @@
         <item
             android:id="@+id/menu_my_event"
             android:icon="@drawable/ic_event_black_24dp"
-            android:title="My Event" />
+            android:title="@string/menu_my_event_string" />
         <item
             android:id="@+id/menu_all_event"
             android:icon="@drawable/ic_list_black_24dp"
-            android:title="All Events" />
+            android:title="@string/menu_all_events_string" />
         <item  android:visible="false"
             android:id="@+id/menu_calander"
             android:icon="@drawable/ic_date_range_black_24dp"

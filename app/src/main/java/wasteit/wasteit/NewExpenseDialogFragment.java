@@ -209,13 +209,13 @@ public class NewExpenseDialogFragment extends DialogFragment implements View.OnC
         // Set the selection
         m_spinner.setSelection(nIndex);
 
-        this.getDialog().setTitle("New Expense");
+        this.getDialog().setTitle(getString(R.string.add_new_expense_title));
 
         // If edit an existing expense
         if (m_expense != null)
         {
             // Changing the title and set the values of the currrent expense
-            this.getDialog().setTitle("Update Expense");
+            this.getDialog().setTitle(getString(R.string.update_expense_title));
             m_cost.setText(String.valueOf(m_expense.getCost()));
             m_expenseName.setText(m_expense.getName());
 

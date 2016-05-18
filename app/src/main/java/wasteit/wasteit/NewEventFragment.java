@@ -97,6 +97,11 @@ public class NewEventFragment extends Fragment implements View.OnClickListener {
                             toast.show();
                             mListener.ShowEventDetails(eNew);
                         }
+                        else
+                        {
+                            Toast toast = Toast.makeText(getContext(), "'" + eNew.getName() + "' Event Creation failed", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
 
                         StartActivity.hideKeyboardFrom(getContext(), getView());
                     }
@@ -247,7 +252,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener {
             this.etMoney.setText(String.valueOf(getEvent().getMoneyAmount()));
             this.etPeopleNum.setText(String.valueOf(getEvent().getNumOfPeople()));
             this.twNumOfDays.setText(String.valueOf(getEvent().getDaysNum()));
-            ((TextView)view.findViewById(R.id.new_event_title)).setText("Edit Event");
+            ((TextView)view.findViewById(R.id.new_event_title)).setText(getString(R.string.update_event_title));
              create_button.setText("SAVE");
         }
 

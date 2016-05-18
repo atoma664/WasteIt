@@ -372,10 +372,10 @@ public class EventDetailsDailyFragment extends Fragment implements View.OnClickL
         setTotalbalance(Services.ReturnRound(dBalance));
         setDailybalance(Services.ReturnRound(dBalancePerDay));
         setDailyAllowance(Services.ReturnRound(dExpensesAllowense));
-        setDailyAvgExpenses(Services.ReturnRound(dAverage));
-        setBalancePercent(nBalancePercent);
-        setProgress(nBalancePercent);
-        setTotal(getSpentToday());
+        //setDailyAvgExpenses(Services.ReturnRound(dAverage));
+        //setBalancePercent(nBalancePercent);
+        //s/etProgress(nBalancePercent);
+        //setTotal(getSpentToday());
     }
 
     // Init the first value when the frag creates
@@ -400,7 +400,7 @@ public class EventDetailsDailyFragment extends Fragment implements View.OnClickL
         String strCurrency = getCurrnetEvent().getCurrency().toString();
         m_totalCurrency.setText(strCurrency);
         m_DailyCurrency.setText(strCurrency);
-        ((TextView)v.findViewById(R.id.event_daily_avg_currency)).setText(strCurrency);
+      //  ((TextView)v.findViewById(R.id.event_daily_avg_currency)).setText(strCurrency);
         ((TextView)v.findViewById(R.id.event_daily_daily_allowance_currency)).setText(strCurrency);
 
         v.findViewById(R.id.event_daily_show_expenses_btn).setOnClickListener(this);
