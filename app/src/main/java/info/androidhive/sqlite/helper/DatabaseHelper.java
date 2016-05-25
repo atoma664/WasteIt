@@ -381,7 +381,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ArrayList<Event> allevents = new ArrayList<Event>();
         String selectQuery = "SELECT " + EventColumnString + ", " + CurrencyColumnString
                 + " FROM " + TABLE_EVENT + " " + EVENT_QUALIFIRE + ", "  + TABLE_CURRENCY + " " + CURRENCY_QUALIFIRE
-                + " WHERE " + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID;
+                + " WHERE " + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID
+                + " ORDER BY " + EVENT_QUALIFIRE + "." + KEY_CREATED_AT + " DESC";
 
         try
         {
@@ -656,6 +657,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //region Special Select
+    /*
+ * getting all todos under single tag
+ * */
+    public ArrayList<Expense> getTotalExpensesForDate(Date currDat) {
+
+        ArrayList<Expense> expenses = new ArrayList<>();
+
+        String selectQuery = "SELECT  SUM(" + KEY_EXPENSE_COST + "), " + KEY_EXPENSE_EVENT_ID + ", " + KEY_EXPENSE_DATE +
+                " FROM " + TABLE_EXPENSE +
+                " WHERE " + KEY_EXPENSE_DATE + " = Datetime('" +
+                getDateOnlyDateTime(currDat) + "')" +
+                " GROUP BY " + KEY_EXPENSE_EVENT_ID;
+
+        // Try to execute
+        try
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+
+                do
+                {
+                    Expense e = ReadGeneralExpenseToObject(c);
+                    expenses.add(e);
+
+                } while (c.moveToNext());
+            }
+
+            return expenses;
+        }
+        catch (Exception e)
+        {
+            WriteToLog(e,selectQuery);
+            return (null);
+        }
+    }
+
     private void WriteToLog(Exception e, String strMessage)
     {
         Log.e(LOG, e.getStackTrace()[e.getStackTrace().length - 1].getMethodName() + " Cant Execute :" + strMessage);
@@ -714,7 +755,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + EXPENSE_QUALIFIRE +"." + KEY_EXPENSE_CATEGORY_ID + " = cat." + KEY_ID +
                 " AND " + EXPENSE_QUALIFIRE + "." + KEY_EXPENSE_EVENT_ID + " = " + nEventID +
                 " AND " + EVENT_QUALIFIRE + "." + KEY_EVENT_CURRENCY_ID + " = " + CURRENCY_QUALIFIRE + "." + KEY_ID +
-                " AND " + EXPENSE_QUALIFIRE + "." + KEY_EXPENSE_DATE + " = '" + getDateOnlyDateTime(d) + "'";
+                " AND " + EXPENSE_QUALIFIRE + "." + KEY_EXPENSE_DATE + " = '" + getDateOnlyDateTime(d) + "'" +
+                " ORDER BY " + EXPENSE_QUALIFIRE + "." + KEY_CREATED_AT + " DESC";
 
         //  Log.e(LOG, selectQuery);
 

@@ -266,6 +266,8 @@ public class StartActivity extends AppCompatActivity implements
         }
         else
         {
+            //returnFrag = EventContainerFragment.newInstance();
+
             returnFrag = EventManagerFragment.newInstance();
         }
 

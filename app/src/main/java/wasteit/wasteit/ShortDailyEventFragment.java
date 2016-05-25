@@ -7,29 +7,34 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.Date;
+
+import info.androidhive.sqlite.helper.Services;
+import info.androidhive.sqlite.model.Event;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ShortEventFragment.OnFragmentInteractionListener} interface
+ * {@link ShortDailyEventFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ShortEventFragment#newInstance} factory method to
+ * Use the {@link ShortDailyEventFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShortEventFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class ShortDailyEventFragment extends Fragment {
+    private static final String CURRENT_EVENT = "Event";
+    private static final String CURRENT_DATE = "Date";
+    private static final String CURRENT_AMOUNT = "Amount";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Event m_event;
+    private Date m_date;
+    private double m_amount;
 
     private OnFragmentInteractionListener mListener;
 
-    public ShortEventFragment() {
+    public ShortDailyEventFragment() {
         // Required empty public constructor
     }
 
@@ -37,16 +42,17 @@ public class ShortEventFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShortEventFragment.
+     * @param event CurretnEvent.
+     * @param date Selected Date.
+     * @return A new instance of fragment ShortDailyEventFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShortEventFragment newInstance(String param1, String param2) {
-        ShortEventFragment fragment = new ShortEventFragment();
+    public static ShortDailyEventFragment newInstance(Event event, Date date, double dAmount) {
+        ShortDailyEventFragment fragment = new ShortDailyEventFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable(CURRENT_EVENT, event);
+        args.putSerializable(CURRENT_DATE, date);
+        args.putDouble(CURRENT_AMOUNT, dAmount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +61,9 @@ public class ShortEventFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            m_event =(Event) getArguments().getSerializable(CURRENT_EVENT);
+            m_date = (Date) getArguments().getSerializable(CURRENT_DATE);
+            m_amount = getArguments().getDouble(CURRENT_AMOUNT);
         }
     }
 
@@ -64,14 +71,13 @@ public class ShortEventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_short_event, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_short_daily_event, container, false);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        ((TextView)view.findViewById(R.id.event_short_date_name)).setText(m_event.getName());
+        ((TextView)view.findViewById(R.id.event_short_date_currency)).setText(m_event.getCurrency().toString());
+        ((TextView)view.findViewById(R.id.event_short_date_amount)).setText(String.valueOf(Services.ReturnRound(m_amount)));
+
+        return view;
     }
 
     @Override
@@ -80,8 +86,8 @@ public class ShortEventFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+           // throw new RuntimeException(context.toString()
+          //          + " must implement OnFragmentInteractionListener");
         }
     }
 

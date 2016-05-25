@@ -80,6 +80,11 @@ public class ExpenseManager implements ManagerInterface {
         return getDB().getTotalExpensesByEventAndDate(EventID, dCurr);
     }
 
+    public ArrayList<Expense> getTotalExpensesForDate(Date dCurr)
+    {
+        return getDB().getTotalExpensesForDate(dCurr);
+    }
+
     public HashMap<Date, Double> getExpensesSumByDate()
     {
         ArrayList<Expense> allexpenses = getDB().getGeneralExpensesByDay();

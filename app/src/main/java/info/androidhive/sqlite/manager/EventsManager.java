@@ -77,6 +77,11 @@ public class EventsManager implements ManagerInterface {
         return nDeleted;
     }
 
+    public ArrayList<Event> getCurrentEvents()
+    {
+        return getDB().getCurrentEvents();
+    }
+
     /**
      *
      * @param event to create

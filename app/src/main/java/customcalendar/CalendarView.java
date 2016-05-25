@@ -153,9 +153,19 @@ public class CalendarView extends LinearLayout
 		});
 
 		// long-pressing a day
+		grid.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				if (eventHandler != null)
+				eventHandler.onDayPress((Date)parent.getItemAtPosition(position));
+			}
+		});
+
+		// long-pressing a day
 		grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 		{
-
 			@Override
 			public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
 			{
@@ -307,5 +317,6 @@ public class CalendarView extends LinearLayout
 	public interface EventHandler
 	{
 		void onDayLongPress(Date date);
+		void onDayPress(Date date);
 	}
 }

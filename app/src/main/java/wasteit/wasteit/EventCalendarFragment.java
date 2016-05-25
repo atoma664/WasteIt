@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Date;
+
 import customcalendar.CalendarView;
 import info.androidhive.sqlite.manager.ExpenseManager;
 
@@ -58,6 +60,21 @@ public class EventCalendarFragment extends Fragment {
         CalendarView cv = ((CalendarView)view.findViewById(R.id.calendar_view));
         cv.updateCalendar(ExpenseManager.gewInstance().getExpensesSumByDate());
 
+        // assign event handler
+        cv.setEventHandler(new CalendarView.EventHandler()
+        {
+            @Override
+            public void onDayLongPress(Date date) {
+
+            }
+
+            @Override
+            public void onDayPress(Date date)
+            {
+                DailySumupFragment d = DailySumupFragment.newInstance(date);
+                d.show(getFragmentManager(), "dailyFragment");
+            }
+        });
 
         return view;
     }
