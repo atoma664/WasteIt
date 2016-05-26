@@ -1,4 +1,4 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Dialog;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,6 +13,7 @@ import java.util.Date;
 
 import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.R;
 
 
 /**

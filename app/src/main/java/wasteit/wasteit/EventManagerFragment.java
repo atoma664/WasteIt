@@ -82,11 +82,11 @@ public class EventManagerFragment extends Fragment {
 
 
         TextView tabOne = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab, null);
-        tabOne.setText("All");
+        tabOne.setText(getString(R.string.event_tab_all));
         tabLayout.getTabAt(0).setCustomView(tabOne);
 
         TextView tabTwo = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab, null);
-        tabTwo.setText("Current");
+        tabTwo.setText(getString(R.string.event_tab_current));
         tabLayout.getTabAt(1).setCustomView(tabTwo);
 
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_plus);

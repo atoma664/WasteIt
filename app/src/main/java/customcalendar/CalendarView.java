@@ -26,6 +26,7 @@ import java.util.Map;
 
 import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.manager.ExpenseManager;
+import info.androidhive.sqlite.manager.SettingsManager;
 import info.androidhive.sqlite.model.Expense;
 import wasteit.wasteit.R;
 
@@ -258,6 +259,8 @@ public class CalendarView extends LinearLayout
 
 			TextView txtDate = (TextView) view.findViewById(R.id.calendar_date_text);
 			TextView txtCost = (TextView) view.findViewById(R.id.calendar_sum_text);
+
+			((TextView)view.findViewById(R.id.calendar_currency_text)).setText(SettingsManager.getInstance().getDefaultCurrency().toString());
 
 			// if this day has an event, specify event image
 			txtDate.setBackgroundResource(0);

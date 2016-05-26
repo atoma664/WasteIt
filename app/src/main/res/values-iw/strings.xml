@@ -71,7 +71,34 @@
     <string name="configure">קונפיגורציה</string>
     <string name="widget_select_event">בחר אירוע:</string>
 
+    <!-- Languages -->
+    <string-array name="string_languages">
+        <item>Default</item>
+        <item>English</item>
+        <item>עברית</item>
+    </string-array>
+
+    <!-- Event Manager -->
+    <string name="event_tab_all">הכל</string>
+    <string name="event_tab_current">נוכחי</string>
+
     <!-- Setting -->
     <string name="settings_title">הגדרות</string>
     <string name="setting_language">שפה:</string>
+    <string name="setting_currency_title">מטבע דיפולטי:</string>
+
+    <!-- Days -->
+    <string name="sun">א</string>
+    <string name="mon">ב</string>
+    <string name="tue">ג</string>
+    <string name="wed">ד</string>
+    <string name="thu">ה</string>
+    <string name="fri">ו</string>
+    <string name="sat">ש</string>
+
+    <!-- DailySum -->
+    <string name="daily_sum">סה"כ הוצאות יומיות</string>
+
+    <!-- Toast -->
+    <string name="toast_setting_save">הגדרות נשמרו</string>
 </resources>

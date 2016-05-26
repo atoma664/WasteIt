@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import info.androidhive.sqlite.helper.Consts;
 import info.androidhive.sqlite.manager.CurrencyManager;
+import info.androidhive.sqlite.manager.SettingsManager;
 import info.androidhive.sqlite.model.Currency;
 
 
@@ -25,17 +27,11 @@ import info.androidhive.sqlite.model.Currency;
  * Use the {@link SettingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class SettingFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
+
+    Spinner m_currencySpinner = null;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -50,11 +46,9 @@ public class SettingFragment extends Fragment {
      * @return A new instance of fragment SettingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SettingFragment newInstance(String param1, String param2) {
+    public static SettingFragment newInstance() {
         SettingFragment fragment = new SettingFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,8 +57,6 @@ public class SettingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -74,7 +66,10 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        Spinner currencySpinner = (Spinner)view.findViewById(R.id.setting_default_currency);
+        view.findViewById(R.id.setting_save).setOnClickListener(this);
+        view.findViewById(R.id.setting_cancel).setOnClickListener(this);
+
+        m_currencySpinner = (Spinner)view.findViewById(R.id.setting_default_currency);
 
         ArrayList<Currency> alCurrencies = CurrencyManager.getInstance().getAllCurrencies();
 
@@ -83,9 +78,9 @@ public class SettingFragment extends Fragment {
                 new ArrayAdapter<info.androidhive.sqlite.model.Currency>(this.getContext(), android.R.layout.simple_spinner_item, alCurrencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        currencySpinner.setAdapter(adapter);
+        m_currencySpinner.setAdapter(adapter);
 
-        int nCurrencyID = getActivity().getPreferences(Context.MODE_PRIVATE).getInt(Consts.DEFAULT_CURRENCY, Consts.READ_FROM_FILE_ERROR);
+        int nCurrencyID = SettingsManager.getInstance().getDefaultCurrency().getID();
         int nCurrencyIndex = 0;
 
         // Set the saved currency to be the selected one
@@ -101,7 +96,7 @@ public class SettingFragment extends Fragment {
                 nCurrencyIndex++;
             }
 
-            currencySpinner.setSelection(nCurrencyIndex);
+            m_currencySpinner.setSelection(nCurrencyIndex);
         }
 
         ArrayAdapter<CharSequence> arrLanguages =
@@ -155,6 +150,30 @@ public class SettingFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId())
+        {
+            case (R.id.setting_cancel):
+            {
+                getFragmentManager().popBackStack();
+
+                break;
+            }
+            case (R.id.setting_save):
+            {
+                SettingsManager.getInstance().setDefaultCurrency((Currency) m_currencySpinner.getSelectedItem());
+
+                Toast t = Toast.makeText(getContext(), getString(R.string.toast_setting_save), Toast.LENGTH_SHORT);
+                t.show();
+                getFragmentManager().popBackStack();
+
+                break;
+            }
+        }
     }
 
     /**

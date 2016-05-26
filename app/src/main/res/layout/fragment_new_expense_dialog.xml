@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:gravity="top"
     android:layout_width="match_parent" android:orientation="vertical"
     android:layout_height="wrap_content" android:minWidth="360dp"
-    tools:context="wasteit.wasteit.NewExpenseDialogFragment">
+    tools:context=".Dialog.NewExpenseDialogFragment">
 
         <LinearLayout android:layout_margin="5dp"
             android:layout_width="match_parent"

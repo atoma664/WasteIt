@@ -78,8 +78,8 @@ public class EventFragment extends Fragment implements View.OnClickListener {
 
         ((TextView)view.findViewById(R.id.event_frag_name)).setText(getEvent().getName());
         ((TextView)view.findViewById(R.id.event_frag_money)).setText(String.valueOf(getEvent().getMoneyAmount()));
-        ((TextView)view.findViewById(R.id.event_frag_start_date)).setText(Services.FromDateToString(getEvent().getStartDate()));
-        ((TextView)view.findViewById(R.id.event_frag_end_date)).setText(Services.FromDateToString(getEvent().getEndDate()));
+        ((TextView)view.findViewById(R.id.event_frag_start_date)).setText(Services.FromDateToShortYearString(getEvent().getStartDate()));
+        ((TextView)view.findViewById(R.id.event_frag_end_date)).setText(Services.FromDateToShortYearString(getEvent().getEndDate()));
         ((TextView)view.findViewById(R.id.event_frag_currency)).setText(getEvent().getCurrency().toString());
 
         ((LinearLayout)view.findViewById(R.id.event_frag_container)).setOnClickListener(this);

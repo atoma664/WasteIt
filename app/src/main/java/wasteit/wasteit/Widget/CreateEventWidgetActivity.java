@@ -1,6 +1,5 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Widget;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +7,9 @@ import android.view.View;
 import java.util.Date;
 
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.NewEventFragment;
+import wasteit.wasteit.R;
+import wasteit.wasteit.Activity.StartActivity;
 
 public class CreateEventWidgetActivity extends AppCompatActivity implements NewEventFragment.OnNewEventListener {
 

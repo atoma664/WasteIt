@@ -1,4 +1,4 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Activity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -38,10 +38,21 @@ import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.manager.CurrencyManager;
 import info.androidhive.sqlite.manager.EventsManager;
 import info.androidhive.sqlite.manager.ExpenseManager;
+import info.androidhive.sqlite.manager.SettingsManager;
 import info.androidhive.sqlite.model.Event;
 import info.androidhive.sqlite.model.Expense;
+import wasteit.wasteit.Dialog.NewExpenseDialogFragment;
+import wasteit.wasteit.EventCalendarFragment;
+import wasteit.wasteit.EventDailyFragment;
+import wasteit.wasteit.EventDetailsDailyFragment;
+import wasteit.wasteit.EventManagerFragment;
 import wasteit.wasteit.MinFragment.EventFragment;
 import wasteit.wasteit.MinFragment.ExpenseFragment;
+import wasteit.wasteit.NewEventFragment;
+import wasteit.wasteit.R;
+import wasteit.wasteit.SettingFragment;
+import wasteit.wasteit.StartFragment;
+import wasteit.wasteit.Widget.AddExpenseWidget;
 
 public class StartActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -79,6 +90,7 @@ public class StartActivity extends AppCompatActivity implements
     final String TAG_NEW_EDIT_EVENT = "NewEditEventFrag";
     final String LAST_FRAG = "LastFragment";
     final String TAG_CALENDAR = "Calender";
+    final String TAG_SETTINGS = "Settings";
 
     //region Getter Setter
     public Event getEvent() {
@@ -178,6 +190,14 @@ public class StartActivity extends AppCompatActivity implements
             case (TAG_CALENDAR):
             {
                 f = EventCalendarFragment.newInstance();
+                strTag = TAG_EVENT_DAILY;
+
+                break;
+            }
+            // Event Daily
+            case (TAG_SETTINGS):
+            {
+                f = SettingFragment.newInstance();
                 strTag = TAG_EVENT_DAILY;
 
                 break;
@@ -304,6 +324,7 @@ public class StartActivity extends AppCompatActivity implements
         CategoryManager.newInstance(this);
         EventsManager.newInstance(this);
         ExpenseManager.newInstance(this);
+        SettingsManager.newInstance(this);
 
         setContentView(R.layout.activity_start);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -422,7 +443,10 @@ public class StartActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
+        {
+            Navagate(TAG_SETTINGS);
+
             return true;
         }
 

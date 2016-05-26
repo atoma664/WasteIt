@@ -1,31 +1,45 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" android:orientation="vertical"
     tools:context="wasteit.wasteit.SettingFragment">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" style="@style/AppTheme.Title"
-        android:text="@string/settings_title" />
-    <LinearLayout
-        android:layout_width="match_parent" android:layout_margin="5dp"
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="0dp" style="@style/AppTheme.FieldTitle" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="@string/setting_language"/>
-        <Spinner
-            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_languages"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" style="@style/AppTheme.Title"
+            android:text="@string/settings_title" />
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp" style="@style/AppTheme.FieldTitle" android:layout_weight="1"
+                android:layout_height="wrap_content" android:text="@string/setting_language"/>
+            <Spinner
+                android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_languages"
+                android:layout_height="wrap_content"></Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp" style="@style/AppTheme.FieldTitle" android:layout_weight="1"
+                android:layout_height="wrap_content" android:text="@string/setting_currency_title"/>
+            <Spinner
+                android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_default_currency"
+                android:layout_height="wrap_content"></Spinner>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent" android:layout_margin="5dp"
+    <LinearLayout android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="0dp" style="@style/AppTheme.FieldTitle" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="@string/setting_currency_title"/>
-        <Spinner
-            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_default_currency"
-            android:layout_height="wrap_content"></Spinner>
+        <Button android:backgroundTint="@color/lightgreen"
+            android:textColor="@color/darkGreen"
+            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_save" android:text="@string/save_btn_title"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/setting_cancel" android:text="@string/cancel_message"
+            android:layout_height="wrap_content" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -18,7 +18,7 @@ import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.manager.ExpenseManager;
 import info.androidhive.sqlite.model.Event;
 import info.androidhive.sqlite.model.Expense;
-import wasteit.wasteit.NewExpenseDialogFragment;
+import wasteit.wasteit.Dialog.NewExpenseDialogFragment;
 import wasteit.wasteit.R;
 
 

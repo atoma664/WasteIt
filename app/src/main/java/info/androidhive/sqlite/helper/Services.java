@@ -14,6 +14,7 @@ import java.util.Date;
 public class Services {
 
     static java.text.DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    static java.text.DateFormat shortformat = new SimpleDateFormat("dd/MM/yy");
 
     public static Date FromStringToDate(String strDate)
     {
@@ -25,6 +26,11 @@ public class Services {
         {
             throw new RuntimeException("String " + strDate +  " not in the format to Convert to Date");
         }
+    }
+
+    public static String FromDateToShortYearString(Date date)
+    {
+        return shortformat.format(date);
     }
 
     public static String FromDateToString(Date date)

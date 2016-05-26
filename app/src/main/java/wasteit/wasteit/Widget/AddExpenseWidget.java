@@ -1,27 +1,23 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Widget;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.opengl.Visibility;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RemoteViews;
 
 import java.util.Date;
 
-import info.androidhive.sqlite.helper.Consts;
-import info.androidhive.sqlite.helper.DatabaseHelper;
 import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.manager.EventsManager;
 import info.androidhive.sqlite.manager.ExpenseManager;
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.Dialog.FastNewExpenseDialogActivity;
+import wasteit.wasteit.R;
+import wasteit.wasteit.Activity.StartActivity;
 
 /**
  * Implementation of App Widget functionality.
@@ -42,6 +38,8 @@ public class AddExpenseWidget extends AppWidgetProvider {
         if (eCurrent != null)
         {
             views = new RemoteViews(context.getPackageName(), R.layout.add_expense_widget);
+
+            views.setTextViewText(R.id.widget_currency, eCurrent.getCurrency().toString());
 
             // Get today info
             Date today = Services.GetToDayAtStart();

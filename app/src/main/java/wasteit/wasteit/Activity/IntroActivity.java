@@ -1,4 +1,4 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import info.androidhive.sqlite.helper.DatabaseHelper;
 import info.androidhive.sqlite.helper.AsyncCallWS;
 import info.androidhive.sqlite.manager.CurrencyManager;
+import wasteit.wasteit.R;
 
 public class IntroActivity extends AppCompatActivity implements AsyncCallWS.LoadCurrencyListener {
 

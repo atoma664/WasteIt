@@ -1,4 +1,4 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ import info.androidhive.sqlite.manager.CategoryManager;
 import info.androidhive.sqlite.manager.CurrencyManager;
 import info.androidhive.sqlite.manager.EventsManager;
 import info.androidhive.sqlite.manager.ExpenseManager;
-import info.androidhive.sqlite.model.Category;
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.R;
 
 /**
  * The configuration screen for the {@link AddExpenseWidget AddExpenseWidget} AppWidget.
@@ -29,7 +28,7 @@ import info.androidhive.sqlite.model.Event;
 public class AddExpenseWidgetConfigureActivity extends Activity {
 
     DatabaseHelper m_db;
-    private static final String PREFS_NAME = "wasteit.wasteit.AddExpenseWidget";
+    private static final String PREFS_NAME = "wasteit.wasteit.Widget.AddExpenseWidget";
     private static final String PREF_PREFIX_KEY = "EventID";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     Spinner mEventsCurrent;

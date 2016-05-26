@@ -5,19 +5,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import info.androidhive.sqlite.manager.EventsManager;
 import info.androidhive.sqlite.manager.ExpenseManager;
-import info.androidhive.sqlite.model.Event;
 import info.androidhive.sqlite.model.Expense;
+import wasteit.wasteit.Dialog.ShortDailyEventFragment;
 import wasteit.wasteit.MinFragment.NoExpenseFragment;
 
 
@@ -67,6 +64,8 @@ public class DailySumupFragment extends DialogFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_daily_sumup, container, false);
 
+        getDialog().setTitle(getString(R.string.daily_sum));
+
         android.support.v4.app.FragmentTransaction ft = getChildFragmentManager().beginTransaction();
 
         ArrayList<Expense> expenses = ExpenseManager.gewInstance().getTotalExpensesForDate(m_date);
@@ -75,14 +74,18 @@ public class DailySumupFragment extends DialogFragment {
         {
             Fragment f = new NoExpenseFragment();
 
-            ft.add(R.id.sum_up_container, f);
+            ft.replace(R.id.sum_up_container, f);
         }
 
-        for (Expense expense: expenses) {
+        // Check if the screen is empty
+        if (getChildFragmentManager().getFragments() == null)
+        {
+            for (Expense expense: expenses) {
 
-            Fragment s =
-                    ShortDailyEventFragment.newInstance(expense.getEvent(), expense.getDate(), expense.getCost());
-            ft.add(R.id.sum_up_container, s, expense.getEvent().getName());
+                Fragment s =
+                        ShortDailyEventFragment.newInstance(expense.getEvent(), expense.getDate(), expense.getCost());
+                ft.add(R.id.sum_up_container, s, expense.getEvent().getName());
+            }
         }
 
         ft.addToBackStack(null);

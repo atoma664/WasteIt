@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -26,7 +26,10 @@ import info.androidhive.sqlite.helper.Consts;
 import info.androidhive.sqlite.manager.CurrencyManager;
 import info.androidhive.sqlite.helper.Services;
 import info.androidhive.sqlite.manager.EventsManager;
+import info.androidhive.sqlite.manager.SettingsManager;
+import info.androidhive.sqlite.model.Currency;
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.Activity.StartActivity;
 
 
 /**
@@ -259,14 +262,32 @@ public class NewEventFragment extends Fragment implements View.OnClickListener {
         // Create the currency values
         spnCurrency = (Spinner)view.findViewById(R.id.new_event_currency);
 
+        ArrayList<Currency> currencies = CurrencyManager.getInstance().getAllCurrencies();
+
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<info.androidhive.sqlite.model.Currency> adapter =
-                new ArrayAdapter<info.androidhive.sqlite.model.Currency>(this.getContext(), android.R.layout.simple_spinner_item, CurrencyManager.getInstance().getAllCurrencies());
+                new ArrayAdapter<info.androidhive.sqlite.model.Currency>(this.getContext(),
+                        android.R.layout.simple_spinner_item, currencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Currency defaultCurrency = SettingsManager.getInstance().getDefaultCurrency();
+
+        int nIndex = 0;
+
+        for (Currency cCurr:currencies)
+        {
+            if (cCurr.getID() == defaultCurrency.getID())
+            {
+                break;
+            }
+
+            nIndex++;
+        }
 
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCurrency.setAdapter(adapter);
+        spnCurrency.setSelection(nIndex);
 
         // Listen to the dates changes
         etStartDate.addTextChangedListener(new TextWatcher()

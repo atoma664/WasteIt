@@ -1,10 +1,8 @@
-package wasteit.wasteit;
+package wasteit.wasteit.Dialog;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,6 +14,8 @@ import info.androidhive.sqlite.manager.CategoryManager;
 import info.androidhive.sqlite.manager.CurrencyManager;
 import info.androidhive.sqlite.manager.ExpenseManager;
 import info.androidhive.sqlite.model.Event;
+import wasteit.wasteit.R;
+import wasteit.wasteit.Widget.AddExpenseWidget;
 
 public class FastNewExpenseDialogActivity extends AppCompatActivity implements NewExpenseDialogFragment.OnCreateExpenseListener{
 

@@ -10,8 +10,8 @@ import info.androidhive.sqlite.model.Currency;
 /**
  * Created by LENOVO on 18/05/2016.
  */
-public class SettingsManager{
-
+public class SettingsManager
+{
     private Context myContext;
     private static SettingsManager m_settingManager;
     private Currency m_currencyDefault;
@@ -22,10 +22,12 @@ public class SettingsManager{
         return m_currencyDefault;
     }
 
-    public void setDefaultCurrency(Currency m_currencyDefault) {
-        m_currencyDefault = m_currencyDefault;
+    public void setDefaultCurrency(Currency currencyDefault) {
+        m_currencyDefault = currencyDefault;
 
-        m_editor.putInt(Consts.DEFAULT_CURRENCY, m_currencyDefault.getID());
+        m_editor.putString(Consts.DEFAULT_CURRENCY, m_currencyDefault.getCurrencyCode());
+
+        m_editor.commit();
     }
 
     private SettingsManager(Context context)
@@ -44,10 +46,10 @@ public class SettingsManager{
         }
         else
         {
-            int nCurrencyID = myContext.getSharedPreferences(Consts.SETTING_PREFERANCES, Context.MODE_PRIVATE).getInt(Consts.DEFAULT_CURRENCY,
-                    CurrencyManager.getInstance().getCurrencyByCode(Consts.DEFAULT_CURRENCY_CODE).getID());
+            String strCurrencyCode = myContext.getSharedPreferences(Consts.SETTING_PREFERANCES, Context.MODE_PRIVATE).getString(Consts.DEFAULT_CURRENCY,
+                    CurrencyManager.getInstance().getCurrencyByCode(Consts.DEFAULT_CURRENCY_CODE).getCurrencyCode());
 
-            m_currencyDefault = CurrencyManager.getInstance().getCurrencyByCode(Consts.DEFAULT_CURRENCY_CODE);
+            m_currencyDefault = CurrencyManager.getInstance().getCurrencyByCode(strCurrencyCode);
         }
     }
 

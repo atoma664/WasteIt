@@ -93,7 +93,7 @@ public class ExpenseManager implements ManagerInterface {
         for (Expense expense:allexpenses)
         {
             Double dCostConverted =
-                    CurrencyManager.ConvertFromToCurrency(expense.getEvent().getCurrency(), CurrencyManager.getDefault(),expense.getCost());
+                    CurrencyManager.ConvertFromToCurrency(expense.getEvent().getCurrency(), SettingsManager.getInstance().getDefaultCurrency(),expense.getCost());
 
             if (sumExpenses.get(expense.getDate())!= null)
             {
